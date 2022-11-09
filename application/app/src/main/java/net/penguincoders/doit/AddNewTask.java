@@ -30,6 +30,8 @@ public class AddNewTask extends BottomSheetDialogFragment {
     public static final String TAG = "ActionBottomDialog";
     private EditText newTaskText;
     private EditText newTaskCategory;
+    private EditText newTaskDueDate;
+    private EditText newTaskDueTime;
     private Button newTaskSaveButton;
 
     private DatabaseHandler db;
@@ -60,6 +62,8 @@ public class AddNewTask extends BottomSheetDialogFragment {
         super.onViewCreated(view, savedInstanceState);
         newTaskText = Objects.requireNonNull(getView()).findViewById(R.id.newTaskText);
         newTaskCategory = Objects.requireNonNull(getView()).findViewById(R.id.newTaskCategory);
+        newTaskDueDate = Objects.requireNonNull(getView()).findViewById(R.id.newTaskDueDate);
+        newTaskDueTime = Objects.requireNonNull(getView()).findViewById(R.id.newTaskDueTime);
         newTaskSaveButton = getView().findViewById(R.id.newTaskButton);
 
         boolean isUpdate = false;
@@ -72,6 +76,12 @@ public class AddNewTask extends BottomSheetDialogFragment {
 
             String category = bundle.getString("category");
             newTaskCategory.setText(category);
+
+            String taskDueDate = bundle.getString("taskDueDate");
+            newTaskDueDate.setText(taskDueDate);
+
+            String taskDueTime = bundle.getString("taskDueTime");
+            newTaskDueTime.setText(taskDueTime);
             assert task != null;
             if(task.length()>0)
                 newTaskSaveButton.setTextColor(ContextCompat.getColor(Objects.requireNonNull(getContext()), R.color.colorPrimaryDark));
@@ -108,6 +118,8 @@ public class AddNewTask extends BottomSheetDialogFragment {
             public void onClick(View v) {
                 String text = newTaskText.getText().toString();
                 String category = newTaskCategory.getText().toString();
+                String taskDueDate = newTaskDueDate.getText().toString();
+                String taskDueTime = newTaskDueTime.getText().toString();
                 if(finalIsUpdate){
                     db.updateTask(bundle.getInt("id"), text);
                 }
@@ -116,6 +128,8 @@ public class AddNewTask extends BottomSheetDialogFragment {
                     task.setTask(text);
                     task.setStatus(0);
                     task.setCategory(category);
+                    task.setTaskDueDate(taskDueDate);
+                    task.setTaskDueTime(taskDueTime);
                     db.insertTask(task);
                 }
                 dismiss();

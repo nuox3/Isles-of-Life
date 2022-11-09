@@ -8,20 +8,26 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import net.penguincoders.doit.Model.ToDoModel;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
 
-    private static final int VERSION = 2;
+    private static final int VERSION = 4;
     private static final String NAME = "toDoListDatabase";
     private static final String TODO_TABLE = "todo";
     private static final String ID = "id";
     private static final String TASK = "task";
     private static final String CATEGORY = "category";
     private static final String STATUS = "status";
+    private static final String IMPORTANCE = "importance";
+    private static final String TASK_CREATED_DATE = "taskCreatedDate";
+    private static final String TASK_DUE_DATE = "taskDueDate";
+    private static final String TASK_DUE_TIME = "taskDueTime";
     private static final String CREATE_TODO_TABLE = "CREATE TABLE " + TODO_TABLE + "(" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + TASK + " TEXT, "
-            + CATEGORY + " TEXT, " + STATUS + " INTEGER)";
+            + CATEGORY + " TEXT, " + TASK_CREATED_DATE + " TEXT, " + TASK_DUE_DATE + " TEXT, " + TASK_DUE_TIME + " TEXT, " + STATUS + " INTEGER)";
 
     private SQLiteDatabase db;
 
@@ -31,6 +37,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         db.execSQL(CREATE_TODO_TABLE);
     }
 
@@ -47,10 +54,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     public void insertTask(ToDoModel task){
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
         ContentValues cv = new ContentValues();
         cv.put(TASK, task.getTask());
         cv.put(CATEGORY, task.getCategory());
         cv.put(STATUS, 0);
+        cv.put(TASK_CREATED_DATE, dateFormat.format(date));
+        cv.put(TASK_DUE_DATE, task.getTaskDueDate());
+        cv.put(TASK_DUE_TIME, task.getTaskDueTime());
+//        cv.put(IMPORTANCE, task.getImportance());
         db.insert(TODO_TABLE, null, cv);
     }
 
@@ -67,6 +81,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                         task.setId(cur.getInt(cur.getColumnIndex(ID)));
                         task.setTask(cur.getString(cur.getColumnIndex(TASK)));
                         task.setCategory(cur.getString(cur.getColumnIndex(CATEGORY)));
+//                        task.setImportance(cur.getInt(cur.getColumnIndex(IMPORTANCE)));
+                        task.setTaskCreatedDate(cur.getString(cur.getColumnIndex(TASK_CREATED_DATE)));
+                        task.setTaskDueDate(cur.getString(cur.getColumnIndex(TASK_DUE_DATE)));
+                        task.setTaskDueTime(cur.getString(cur.getColumnIndex(TASK_DUE_TIME)));
                         task.setStatus(cur.getInt(cur.getColumnIndex(STATUS)));
                         taskList.add(task);
                     }
@@ -97,6 +115,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void updateCategory(int id, String category) {
         ContentValues cv = new ContentValues();
         cv.put(CATEGORY, category);
+        db.update(TODO_TABLE, cv, ID + "= ?", new String[] {String.valueOf(id)});
+    }
+
+    public void updateTaskCreatedDate(int id, String date) {
+        ContentValues cv = new ContentValues();
+        cv.put(TASK_CREATED_DATE, date);
+        db.update(TODO_TABLE, cv, ID + "= ?", new String[] {String.valueOf(id)});
+    }
+
+    public void updateImportance(int id, int importance) {
+        ContentValues cv = new ContentValues();
+        cv.put(CATEGORY, importance);
         db.update(TODO_TABLE, cv, ID + "= ?", new String[] {String.valueOf(id)});
     }
 

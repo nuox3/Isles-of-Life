@@ -84,6 +84,7 @@
                 tools:ignore="MissingPrefix" />
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/radioGroup_taskImportance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -137,26 +138,34 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/newTaskCreatedDate"
                 android:layout_marginLeft="3dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:text="Task Create Date"
+                android:text="Task Due Date"
                 tools:ignore="MissingPrefix" />
 
-            <DatePicker
-                android:id="@+id/taskDate"
+            <EditText
+                android:textSize="14sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:calendarViewShown="false"
-                android:datePickerMode="spinner"
-                android:gravity="center"
-                android:spinnersShown="true" />
+                android:layout_marginTop="5dp"
+                android:singleLine="true"
+                android:padding="10dp"
+                android:id="@+id/newTaskDueDate"
+                tools:ignore="MissingPrefix" />
+
+<!--            <DatePicker-->
+<!--                android:id="@+id/taskDueDate"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:calendarViewShown="false"-->
+<!--                android:datePickerMode="spinner"-->
+<!--                android:gravity="center"-->
+<!--                android:spinnersShown="true" />-->
 
 
             <TextView
-                android:id="@+id/newTaskDueTime"
                 android:layout_marginLeft="3dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -164,15 +173,25 @@
                 android:text="Task Due Time"
                 tools:ignore="MissingPrefix" />
 
-            <TimePicker
-                android:id="@+id/taskTime"
+            <EditText
+                android:textSize="14sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:calendarViewShown="false"
-                android:timePickerMode="spinner"
-                android:gravity="center"
-                android:spinnersShown="true"
+                android:layout_marginTop="5dp"
+                android:singleLine="true"
+                android:padding="10dp"
+                android:id="@+id/newTaskDueTime"
                 tools:ignore="MissingPrefix" />
+
+<!--            <TimePicker-->
+<!--                android:id="@+id/taskTime"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:calendarViewShown="false"-->
+<!--                android:timePickerMode="spinner"-->
+<!--                android:gravity="center"-->
+<!--                android:spinnersShown="true"-->
+<!--                tools:ignore="MissingPrefix" />-->
 
             <Button
                 android:layout_width="match_parent"
