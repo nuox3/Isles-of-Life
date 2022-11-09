@@ -3,6 +3,7 @@ package net.penguincoders.doit.Model;
 public class ToDoModel {
     private int id, status;
     private String task;
+    private String category;
 
     public int getId() {
         return id;
@@ -26,5 +27,13 @@ public class ToDoModel {
 
     public void setTask(String task) {
         this.task = task;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

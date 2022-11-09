@@ -70,7 +70,7 @@
                 android:layout_marginTop="5dp"
                 android:singleLine="true"
                 android:padding="10dp"
-                android:id="@+id/addTaskDescription"
+                android:id="@+id/newTaskCategory"
                 tools:ignore="MissingPrefix" />
 
             <TextView
