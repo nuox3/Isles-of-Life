@@ -1,4 +1,4 @@
-package net.penguincoders.doit.Adapters;
+package com.cs465.islesoflife.Adapters;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -7,17 +7,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import net.penguincoders.doit.AddNewTask;
-import net.penguincoders.doit.MainActivity;
-import net.penguincoders.doit.Model.ToDoModel;
+import com.cs465.islesoflife.AddNewTask;
+import com.cs465.islesoflife.MainActivity;
+import com.cs465.islesoflife.Model.ToDoModel;
+import com.cs465.islesoflife.Utils.DatabaseHandler;
+
 import net.penguincoders.doit.R;
-import net.penguincoders.doit.Utils.DatabaseHandler;
 
 import java.util.List;
 

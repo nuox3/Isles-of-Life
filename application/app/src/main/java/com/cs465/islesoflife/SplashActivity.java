@@ -1,10 +1,12 @@
-package net.penguincoders.doit;
+package com.cs465.islesoflife;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import net.penguincoders.doit.R;
 
 public class SplashActivity extends AppCompatActivity {
 

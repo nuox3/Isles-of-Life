@@ -1,4 +1,4 @@
-package net.penguincoders.doit.Utils;
+package com.cs465.islesoflife.Utils;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import net.penguincoders.doit.Model.ToDoModel;
+import com.cs465.islesoflife.Model.ToDoModel;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

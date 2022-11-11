@@ -1,4 +1,4 @@
-package net.penguincoders.doit;
+package com.cs465.islesoflife;
 
 import android.content.DialogInterface;
 

@@ -1,4 +1,4 @@
-package net.penguincoders.doit.Model;
+package com.cs465.islesoflife.Model;
 
 public class ToDoModel {
     private int id, status, importance;
