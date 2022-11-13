@@ -15,7 +15,7 @@ import java.util.List;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
 
-    private static final int VERSION = 4;
+    private static final int VERSION = 5;
     private static final String NAME = "toDoListDatabase";
     private static final String TODO_TABLE = "todo";
     private static final String ID = "id";
@@ -27,7 +27,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String TASK_DUE_DATE = "taskDueDate";
     private static final String TASK_DUE_TIME = "taskDueTime";
     private static final String CREATE_TODO_TABLE = "CREATE TABLE " + TODO_TABLE + "(" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + TASK + " TEXT, "
-            + CATEGORY + " TEXT, " + TASK_CREATED_DATE + " TEXT, " + TASK_DUE_DATE + " TEXT, " + TASK_DUE_TIME + " TEXT, " + STATUS + " INTEGER)";
+            + CATEGORY + " TEXT, " +  IMPORTANCE + " TEXT, " + TASK_CREATED_DATE + " TEXT, " + TASK_DUE_DATE + " TEXT, " + TASK_DUE_TIME + " TEXT, " + STATUS + " INTEGER)";
 
     private SQLiteDatabase db;
 
@@ -61,10 +61,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         cv.put(TASK, task.getTask());
         cv.put(CATEGORY, task.getCategory());
         cv.put(STATUS, 0);
+        cv.put(IMPORTANCE, task.getImportance());
         cv.put(TASK_CREATED_DATE, dateFormat.format(date));
         cv.put(TASK_DUE_DATE, task.getTaskDueDate());
         cv.put(TASK_DUE_TIME, task.getTaskDueTime());
-//        cv.put(IMPORTANCE, task.getImportance());
         db.insert(TODO_TABLE, null, cv);
     }
 
@@ -81,7 +81,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                         task.setId(cur.getInt(cur.getColumnIndex(ID)));
                         task.setTask(cur.getString(cur.getColumnIndex(TASK)));
                         task.setCategory(cur.getString(cur.getColumnIndex(CATEGORY)));
-//                        task.setImportance(cur.getInt(cur.getColumnIndex(IMPORTANCE)));
+                        task.setImportance(cur.getString(cur.getColumnIndex(IMPORTANCE)));
                         task.setTaskCreatedDate(cur.getString(cur.getColumnIndex(TASK_CREATED_DATE)));
                         task.setTaskDueDate(cur.getString(cur.getColumnIndex(TASK_DUE_DATE)));
                         task.setTaskDueTime(cur.getString(cur.getColumnIndex(TASK_DUE_TIME)));

@@ -50,6 +50,8 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
         holder.taskDueDate.setText(item.getTaskDueDate());
         holder.taskDueTime.setText(item.getTaskDueTime());
         holder.task.setChecked(toBoolean(item.getStatus()));
+        String importance = "+" + item.getImportance();
+        holder.taskImportance.setText(importance);
         holder.task.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -95,6 +97,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
         bundle.putString("category", item.getCategory());
         bundle.putString("taskDueDate", item.getTaskDueDate());
         bundle.putString("taskDueTime", item.getTaskDueTime());
+        bundle.putString("taskImportance", item.getImportance());
         AddNewTask fragment = new AddNewTask();
         fragment.setArguments(bundle);
         fragment.show(activity.getSupportFragmentManager(), AddNewTask.TAG);
@@ -105,6 +108,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
         TextView taskCategory;
         TextView taskDueDate;
         TextView taskDueTime;
+        TextView taskImportance;
 
         ViewHolder(View view) {
             super(view);
@@ -112,6 +116,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
             taskCategory = view.findViewById(R.id.islandCategory_display);
             taskDueDate = view.findViewById(R.id.taskDueDate);
             taskDueTime = view.findViewById(R.id.taskDueTime);
+            taskImportance = view.findViewById(R.id.taskImportance);
         }
     }
 }

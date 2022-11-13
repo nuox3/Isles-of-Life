@@ -1,12 +1,13 @@
 package com.cs465.islesoflife.Model;
 
 public class ToDoModel {
-    private int id, status, importance;
+    private int id, status;
     private String task;
     private String category;
     private String taskCreatedDate;
     private String taskDueDate;
     private String taskDueTime;
+    private String taskImportance;
 
     public int getId() {
         return id;
@@ -64,11 +65,11 @@ public class ToDoModel {
         this.taskDueTime = time;
     }
 
-    public int getImportance() {
-        return importance;
+    public String getImportance() {
+        return taskImportance;
     }
 
-    public void setImportance(int importance) {
-        this.importance = importance;
+    public void setImportance(String importance) {
+        this.taskImportance = importance;
     }
 }
