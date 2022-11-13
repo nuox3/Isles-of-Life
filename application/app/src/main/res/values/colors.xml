@@ -5,4 +5,9 @@
     <color name="colorAccent">#000000</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="five">#FF0000</color>
+    <color name="four">#FF8000</color>
+    <color name="three">#0000FF</color>
+    <color name="two">#3D9140</color>
+    <color name="one">#C0C0C0</color>
 </resources>

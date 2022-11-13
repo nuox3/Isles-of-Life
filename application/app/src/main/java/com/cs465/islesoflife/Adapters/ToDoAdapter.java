@@ -1,5 +1,6 @@
 package com.cs465.islesoflife.Adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -40,6 +41,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
         return new ViewHolder(itemView);
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         db.openDatabase();
@@ -50,8 +52,22 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
         holder.taskDueDate.setText(item.getTaskDueDate());
         holder.taskDueTime.setText(item.getTaskDueTime());
         holder.task.setChecked(toBoolean(item.getStatus()));
-        String importance = "+" + item.getImportance();
+
+        String defaultImportance = (String) item.getImportance();
+        String importance = "+" + defaultImportance;
         holder.taskImportance.setText(importance);
+        if(defaultImportance.equals("5")){
+            holder.taskImportance.setTextColor(this.activity.getResources().getColor(R.color.five));
+        }else if(defaultImportance.equals("4")){
+            holder.taskImportance.setTextColor(this.activity.getResources().getColor(R.color.four));
+        }else if(defaultImportance.equals("3")){
+            holder.taskImportance.setTextColor(this.activity.getResources().getColor(R.color.three));
+        }else if(defaultImportance.equals("2")){
+            holder.taskImportance.setTextColor(this.activity.getResources().getColor(R.color.two));
+        }else if(defaultImportance.equals("1")){
+            holder.taskImportance.setTextColor(this.activity.getResources().getColor(R.color.one));
+        }
+
         holder.task.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
