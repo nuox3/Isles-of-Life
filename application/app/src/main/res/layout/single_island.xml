@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:layout_gravity="top"
+        android:background="#19bdff"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="top"
+
+            >
+            <ImageButton
+                android:layout_width="65dp"
+                android:layout_height="60dp"
+                android:src="@drawable/ic_baseline_arrow_circle_left_24"
+                android:scaleType="fitXY"
+                android:backgroundTint="#00000000"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_gravity="top"
+            >
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_checklist_24"
+                android:backgroundTint="#00000000"
+                android:paddingRight="50dp"
+                android:id="@+id/toDailyTask"
+                />
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_calendar_month_24"
+                android:backgroundTint="#00000000"
+                android:paddingLeft="50dp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:orientation="vertical"
+            android:paddingTop="130dp"
+            android:paddingBottom="50dp"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="45sp"
+                android:typeface="serif"
+                android:id="@+id/islandName"
+                />
+        </LinearLayout>
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_keyboard_double_arrow_left_24"
+                android:backgroundTint="#00000000"
+                android:layout_gravity="left"
+                android:layout_marginTop="150dp"
+                android:id="@+id/toLeftIsland"
+                />
+            <ImageButton
+                android:layout_width="300dp"
+                android:layout_height="350dp"
+                android:scaleType="fitCenter"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/island_example"
+                android:background="#00000000"
+                android:id="@+id/toIslandDetail"
+                />
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_keyboard_double_arrow_right_24"
+                android:backgroundTint="#00000000"
+                android:layout_gravity="right"
+                android:layout_marginTop="150dp"
+                android:id="@+id/toRightIsland"
+                />
+        </FrameLayout>
+
+    </LinearLayout>
+</FrameLayout>

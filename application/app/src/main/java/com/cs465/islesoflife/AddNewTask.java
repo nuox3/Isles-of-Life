@@ -29,7 +29,7 @@ import com.cs465.islesoflife.Utils.DatabaseHandler;
 
 import java.util.Objects;
 
-public class AddNewTask extends BottomSheetDialogFragment {
+public class AddNewTask extends BottomSheetDialogFragment{
 
     public static final String TAG = "ActionBottomDialog";
     private EditText newTaskText;
