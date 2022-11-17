@@ -30,6 +30,7 @@
                 android:src="@drawable/ic_baseline_arrow_circle_left_24"
                 android:scaleType="fitXY"
                 android:backgroundTint="#00000000"
+                android:id="@+id/toHomePage"
                 />
         </LinearLayout>
         <LinearLayout
@@ -97,7 +98,6 @@
                 android:layout_height="350dp"
                 android:scaleType="fitCenter"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp"
                 android:src="@drawable/island_example"
                 android:background="#00000000"
                 android:id="@+id/toIslandDetail"

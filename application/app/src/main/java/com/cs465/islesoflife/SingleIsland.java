@@ -32,6 +32,7 @@ public class SingleIsland extends AppCompatActivity {
 
         db = new DatabaseHandler(this);
         db.openDatabase();
+        // db.insertDefaultData();
 
 
         islandList = db.getAllIslands();
@@ -101,6 +102,15 @@ public class SingleIsland extends AppCompatActivity {
                 intent.putExtras(para);
 
                 startActivity(intent);
+            }
+        });
+
+        ImageButton btn_to_home_page = (ImageButton) findViewById(R.id.toHomePage);
+
+        btn_to_home_page.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 

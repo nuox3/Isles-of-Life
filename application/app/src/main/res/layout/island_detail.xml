@@ -90,41 +90,47 @@
                 android:paddingLeft="10dp"
                 android:id="@+id/levelText"/>
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:background="@drawable/customborder"
-            android:layout_marginTop="10dp"
-            >
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Inhabitants"
-                android:textSize="25dp"
-                android:textStyle="bold"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Egg"
-                android:textSize="20dp"
-                />
-        </LinearLayout>
         <ImageView
             android:layout_width="300dp"
             android:layout_height="350dp"
             android:scaleType="fitCenter"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="120dp"
             android:src="@drawable/island_example"
             android:background="#00000000"
             android:id="@+id/islandImage"
             />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@drawable/customborder"
+        android:layout_marginTop="10dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Inhabitants"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            />
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
 
     </LinearLayout>
 </FrameLayout>
