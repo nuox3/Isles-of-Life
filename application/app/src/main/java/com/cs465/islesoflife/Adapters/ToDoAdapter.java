@@ -71,10 +71,15 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
         holder.task.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                int currEXP = db.getIslandEXP(item.getCategory());
                 if (isChecked) {
                     db.updateStatus(item.getId(), 1);
+                    currEXP = currEXP + Integer.valueOf(item.getImportance());
+                    db.updateEXP(item.getCategory(), currEXP);
                 } else {
                     db.updateStatus(item.getId(), 0);
+                    currEXP = currEXP - Integer.valueOf(item.getImportance());
+                    db.updateEXP(item.getCategory(),currEXP);
                 }
             }
         });

@@ -230,12 +230,45 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return speciesList;
     }
 
+    public int getIslandEXP(String islandName){
+        Cursor cur = null;
+        db.beginTransaction();
+        int exp = 0;
+        try{
+            final String GET_ALL_SPECIES_QUERY = "SELECT * FROM " + ISLAND_TABLE + " WHERE name=\"" + islandName+"\"";
+//            System.out.println();
+            cur = db.rawQuery(GET_ALL_SPECIES_QUERY, null);
+            if(cur != null){
+                if(cur.moveToFirst()){
+                    do{
+                        exp = cur.getInt(cur.getColumnIndex(ISLAND_EXP));
+                    }
+                    while(cur.moveToNext());
+                }
+            }
+        }
+        finally {
+            db.endTransaction();
+            assert cur != null;
+            cur.close();
+        }
+
+        return exp;
+    }
+
 
 
     public void updateStatus(int id, int status){
         ContentValues cv = new ContentValues();
         cv.put(STATUS, status);
         db.update(TODO_TABLE, cv, ID + "= ?", new String[] {String.valueOf(id)});
+    }
+
+    public void updateEXP(String name, int exp){
+        ContentValues cv = new ContentValues();
+        cv.put(ISLAND_EXP, exp);
+        db.update(ISLAND_TABLE, cv, ISLAND_NAME + "= ?", new String[] {String.valueOf(name)});
+
     }
 
     public void updateTask(int id, String task) {
