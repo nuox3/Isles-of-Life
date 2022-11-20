@@ -32,7 +32,7 @@ public class SingleIsland extends AppCompatActivity {
 
         db = new DatabaseHandler(this);
         db.openDatabase();
-        db.insertDefaultData();
+        // db.insertDefaultData();
 
 
         islandList = db.getAllIslands();
