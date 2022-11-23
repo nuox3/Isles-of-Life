@@ -1,15 +1,26 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.MyQuizApp" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.Islesoflife" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimary">#659900</item>
+        <item name="colorPrimaryVariant">#659900</item>
+        <item name="colorOnPrimary">#659900</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondary">#659900</item>
+        <item name="colorSecondaryVariant">@color/purple_200</item>
+        <item name="colorOnSecondary">@color/colorPrimary</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">#FF659900</item>
         <!-- Customize your theme here. -->
+        <item name="android:checkboxStyle">@color/colorPrimary</item>
     </style>
+
+    <style name="Theme.Islesoflife.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Islesoflife.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Islesoflife.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
