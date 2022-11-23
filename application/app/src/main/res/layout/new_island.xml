@@ -24,13 +24,13 @@
                 android:layout_centerInParent="true">
             </ImageButton>
 
-            <ImageSwitcher
+            <ImageView
                 android:id="@+id/imageSwitcher"
                 android:layout_width="300dp"
                 android:layout_height="380dp"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/sand_island_1">
-            </ImageSwitcher>
+                android:src="@drawable/sand_island_1">
+            </ImageView>
 
             <ImageButton
                 android:id="@+id/nextIsland"

@@ -22,7 +22,7 @@ public class SingleIsland extends AppCompatActivity {
     private DatabaseHandler db;
     private List<IslandModel> islandList;
     private int islandListSize;
-    int curIslandIdx = 0;
+    int curIslandIdx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +32,10 @@ public class SingleIsland extends AppCompatActivity {
 
         db = new DatabaseHandler(this);
         db.openDatabase();
-        db.insertDefaultData();
 
+        Bundle b = getIntent().getExtras();
+        if(b != null)
+            curIslandIdx = b.getInt("curIdx");
 
         islandList = db.getAllIslands();
         islandListSize = islandList.size();
@@ -42,9 +44,9 @@ public class SingleIsland extends AppCompatActivity {
         final ImageView islandImage = (ImageView) findViewById(R.id.toIslandDetail);
 
         if(islandListSize > 0) {
-            islandName.setText(islandList.get(0).getName());
+            islandName.setText(islandList.get(curIslandIdx).getName());
 
-            int imageResource = getResources().getIdentifier(islandList.get(0).getImagePath(), null, getPackageName());
+            int imageResource = getResources().getIdentifier(islandList.get(curIslandIdx).getImagePath(), null, getPackageName());
             islandImage.setImageResource(imageResource);
         }
 
