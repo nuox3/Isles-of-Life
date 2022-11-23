@@ -8,11 +8,11 @@
         <!-- Secondary brand color. -->
         <item name="colorSecondary">#659900</item>
         <item name="colorSecondaryVariant">@color/purple_200</item>
-        <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="colorOnSecondary">@color/colorPrimary</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">#FF659900</item>
         <!-- Customize your theme here. -->
-        <item name="android:checkboxStyle">#FFFFFF</item>
+        <item name="android:checkboxStyle">@color/colorPrimary</item>
     </style>
 
     <style name="Theme.Islesoflife.NoActionBar">
