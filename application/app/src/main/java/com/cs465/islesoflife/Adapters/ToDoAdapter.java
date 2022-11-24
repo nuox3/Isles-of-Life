@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cs465.islesoflife.AddNewTask;
-import com.cs465.islesoflife.MainActivity;
+import com.cs465.islesoflife.DailyTaskActivity;
 import com.cs465.islesoflife.Model.ToDoModel;
 import com.cs465.islesoflife.Utils.DatabaseHandler;
 
@@ -26,9 +26,9 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
 
     private List<ToDoModel> todoList;
     private DatabaseHandler db;
-    private MainActivity activity;
+    private DailyTaskActivity activity;
 
-    public ToDoAdapter(DatabaseHandler db, MainActivity activity) {
+    public ToDoAdapter(DatabaseHandler db, DailyTaskActivity activity) {
         this.db = db;
         this.activity = activity;
     }

@@ -1,12 +1,15 @@
 package com.cs465.islesoflife;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -27,6 +30,7 @@ import net.penguincoders.doit.R;
 
 import com.cs465.islesoflife.Utils.DatabaseHandler;
 
+import java.util.Calendar;
 import java.util.Objects;
 
 public class AddNewTask extends BottomSheetDialogFragment{
@@ -41,6 +45,11 @@ public class AddNewTask extends BottomSheetDialogFragment{
     private RadioButton newTaskImportance;
 
     private DatabaseHandler db;
+
+    DatePickerDialog datePickerDialog;
+    TimePickerDialog timePickerDialog;
+    private int mYear, mMonth, mDay;
+    int mHour, mMinute;
 
     public static AddNewTask newInstance(){
         return new AddNewTask();
@@ -68,13 +77,49 @@ public class AddNewTask extends BottomSheetDialogFragment{
         super.onViewCreated(view, savedInstanceState);
         newTaskText = Objects.requireNonNull(getView()).findViewById(R.id.newTaskText);
         newTaskCategory = Objects.requireNonNull(getView()).findViewById(R.id.newTaskCategory);
-        newTaskDueDate = Objects.requireNonNull(getView()).findViewById(R.id.newTaskDueDate);
+        newTaskDueDate = getView().findViewById(R.id.newTaskDueDate);
+//        newTaskDueDate = Objects.requireNonNull(getView()).findViewById(R.id.newTaskDueDate);
         newTaskDueTime = Objects.requireNonNull(getView()).findViewById(R.id.newTaskDueTime);
         newTaskSaveButton = getView().findViewById(R.id.newTaskButton);
 
         radioGroup = getView().findViewById(R.id.radioGroup_taskImportance);
 
         boolean isUpdate = false;
+
+        newTaskDueDate.setOnTouchListener((currView, motionEvent) -> {
+            if(motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                final Calendar c = Calendar.getInstance();
+                mYear = c.get(Calendar.YEAR);
+                mMonth = c.get(Calendar.MONTH);
+                mDay = c.get(Calendar.DAY_OF_MONTH);
+                datePickerDialog = new DatePickerDialog(getActivity(), R.style.MyDatePickerDialogTheme,
+                        (view1, year, monthOfYear, dayOfMonth) -> {
+                            newTaskDueDate.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+                            datePickerDialog.dismiss();
+                        }, mYear, mMonth, mDay);
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+                datePickerDialog.show();
+            }
+            return true;
+        });
+
+        newTaskDueTime.setOnTouchListener((currView2, motionEvent) -> {
+            if(motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                // Get Current Time
+                final Calendar c = Calendar.getInstance();
+                mHour = c.get(Calendar.HOUR_OF_DAY);
+                mMinute = c.get(Calendar.MINUTE);
+
+                // Launch Time Picker Dialog
+                timePickerDialog = new TimePickerDialog(getActivity(),R.style.MyDatePickerDialogTheme,
+                        (view2, hourOfDay, minute) -> {
+                            newTaskDueTime.setText(hourOfDay + ":" + minute);
+                            timePickerDialog.dismiss();
+                        }, mHour, mMinute, false);
+                timePickerDialog.show();
+            }
+            return true;
+        });
 
         final Bundle bundle = getArguments();
         if(bundle != null){

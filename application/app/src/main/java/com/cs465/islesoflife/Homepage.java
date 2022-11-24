@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.cs465.islesoflife.Adapters.SpeciesAdapter;
 import com.cs465.islesoflife.Adapters.IslandAdapter;
 import com.cs465.islesoflife.Model.IslandModel;
 import com.cs465.islesoflife.Utils.DatabaseHandler;
@@ -57,7 +56,7 @@ public class Homepage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(Homepage.this, SplashActivity.class);
+                intent.setClass(Homepage.this, DailyTaskActivity.class);
                 startActivity(intent);
             }
         });
