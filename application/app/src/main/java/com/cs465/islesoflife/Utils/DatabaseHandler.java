@@ -256,6 +256,31 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return exp;
     }
 
+    public List<String> getAllIslandNames(){
+        Cursor cur = null;
+        db.beginTransaction();
+        List<String> nameList = new ArrayList<>();
+        try{
+            final String GET_ALL_SPECIES_QUERY = "SELECT DISTINCT name FROM " + ISLAND_TABLE;
+            cur = db.rawQuery(GET_ALL_SPECIES_QUERY, null);
+            if(cur != null){
+                if(cur.moveToFirst()){
+                    do{
+                        nameList.add(cur.getString(cur.getColumnIndex(ISLAND_NAME)));
+                    }
+                    while(cur.moveToNext());
+                }
+            }
+        }
+        finally {
+            db.endTransaction();
+            assert cur != null;
+            cur.close();
+        }
+
+        return nameList;
+    }
+
 
 
     public void updateStatus(int id, int status){

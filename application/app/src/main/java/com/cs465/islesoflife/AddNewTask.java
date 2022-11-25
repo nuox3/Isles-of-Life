@@ -13,10 +13,13 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,14 +33,16 @@ import net.penguincoders.doit.R;
 
 import com.cs465.islesoflife.Utils.DatabaseHandler;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Objects;
 
 public class AddNewTask extends BottomSheetDialogFragment{
 
     public static final String TAG = "ActionBottomDialog";
     private EditText newTaskText;
-    private EditText newTaskCategory;
+    private Spinner newTaskCategory;
     private EditText newTaskDueDate;
     private EditText newTaskDueTime;
     private Button newTaskSaveButton;
@@ -50,6 +55,10 @@ public class AddNewTask extends BottomSheetDialogFragment{
     TimePickerDialog timePickerDialog;
     private int mYear, mMonth, mDay;
     int mHour, mMinute;
+
+    private Spinner sp1;
+    List<String> data;    //列表框的选项
+
 
     public static AddNewTask newInstance(){
         return new AddNewTask();
@@ -76,7 +85,7 @@ public class AddNewTask extends BottomSheetDialogFragment{
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         newTaskText = Objects.requireNonNull(getView()).findViewById(R.id.newTaskText);
-        newTaskCategory = Objects.requireNonNull(getView()).findViewById(R.id.newTaskCategory);
+        newTaskCategory = getView().findViewById(R.id.newTaskCategory);
         newTaskDueDate = getView().findViewById(R.id.newTaskDueDate);
 //        newTaskDueDate = Objects.requireNonNull(getView()).findViewById(R.id.newTaskDueDate);
         newTaskDueTime = Objects.requireNonNull(getView()).findViewById(R.id.newTaskDueTime);
@@ -86,6 +95,19 @@ public class AddNewTask extends BottomSheetDialogFragment{
 
         boolean isUpdate = false;
 
+        db = new DatabaseHandler(getActivity());
+        db.openDatabase();
+
+        List<String> arrayList = db.getAllIslandNames();
+        String[] data = (String[]) arrayList.toArray(new String[0]);
+        // set spiner
+        ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_expandable_list_item_1, data);
+        //获取到控件的属性
+        sp1 = (Spinner)getView().findViewById(R.id.newTaskCategory);
+        //将选项加入下拉框
+        sp1.setAdapter(arrayAdapter);
+
+        // set date picker
         newTaskDueDate.setOnTouchListener((currView, motionEvent) -> {
             if(motionEvent.getAction() == MotionEvent.ACTION_UP) {
                 final Calendar c = Calendar.getInstance();
@@ -103,6 +125,7 @@ public class AddNewTask extends BottomSheetDialogFragment{
             return true;
         });
 
+        // set time picker
         newTaskDueTime.setOnTouchListener((currView2, motionEvent) -> {
             if(motionEvent.getAction() == MotionEvent.ACTION_UP) {
                 // Get Current Time
@@ -127,8 +150,8 @@ public class AddNewTask extends BottomSheetDialogFragment{
             String task = bundle.getString("task");
             newTaskText.setText(task);
 
-            String category = bundle.getString("category");
-            newTaskCategory.setText(category);
+//            String category = bundle.getString("category");
+//            newTaskCategory.setText(category);
 
             String taskDueDate = bundle.getString("taskDueDate");
             newTaskDueDate.setText(taskDueDate);
@@ -143,8 +166,6 @@ public class AddNewTask extends BottomSheetDialogFragment{
                 newTaskSaveButton.setTextColor(ContextCompat.getColor(Objects.requireNonNull(getContext()), R.color.colorPrimaryDark));
         }
 
-        db = new DatabaseHandler(getActivity());
-        db.openDatabase();
 
         newTaskText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -173,7 +194,7 @@ public class AddNewTask extends BottomSheetDialogFragment{
             @Override
             public void onClick(View v) {
                 String text = newTaskText.getText().toString();
-                String category = newTaskCategory.getText().toString();
+                String category = newTaskCategory.getSelectedItem().toString();
                 String taskDueDate = newTaskDueDate.getText().toString();
                 String taskDueTime = newTaskDueTime.getText().toString();
 
@@ -203,4 +224,5 @@ public class AddNewTask extends BottomSheetDialogFragment{
         if(activity instanceof DialogCloseListener)
             ((DialogCloseListener)activity).handleDialogClose(dialog);
     }
+
 }
