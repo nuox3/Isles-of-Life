@@ -13,4 +13,8 @@
         <item name="android:windowSoftInputMode">adjustResize</item>
     </style>
 
+    <style name="MyDatePickerDialogTheme" parent="android:Theme.Material.Light.Dialog">
+        <item name="android:colorAccent">@color/colorPrimaryDark</item>
+    </style>
+
 </resources>

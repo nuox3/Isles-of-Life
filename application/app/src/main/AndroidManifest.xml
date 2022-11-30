@@ -12,7 +12,7 @@
         <activity android:name="com.cs465.islesoflife.SingleIsland"/>
         <activity android:name="com.cs465.islesoflife.IslandDetail" />
         <activity android:name="com.cs465.islesoflife.SplashActivity"/>
-        <activity android:name="com.cs465.islesoflife.MainActivity" />
+        <activity android:name="com.cs465.islesoflife.DailyTaskActivity" />
         <activity android:name="com.cs465.islesoflife.AddNewIsland" />
         <activity android:name="com.cs465.islesoflife.Homepage" >
             <intent-filter>

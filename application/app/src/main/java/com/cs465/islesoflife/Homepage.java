@@ -56,7 +56,7 @@ public class Homepage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(Homepage.this, SplashActivity.class);
+                intent.setClass(Homepage.this, DailyTaskActivity.class);
                 startActivity(intent);
             }
         });

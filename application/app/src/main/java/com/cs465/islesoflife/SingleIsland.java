@@ -148,7 +148,7 @@ public class SingleIsland extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(SingleIsland.this, MainActivity.class);
+                intent.setClass(SingleIsland.this, DailyTaskActivity.class);
                 startActivity(intent);
             }
         });

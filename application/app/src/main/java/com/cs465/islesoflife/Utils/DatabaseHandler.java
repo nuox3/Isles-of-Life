@@ -370,6 +370,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return exp;
     }
 
+
     public int getIslandId(String islandName){
         Cursor cur = null;
         db.beginTransaction();
@@ -419,6 +420,31 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
 
         return level;
+    }
+
+    public List<String> getAllIslandNames(){
+        Cursor cur = null;
+        db.beginTransaction();
+        List<String> nameList = new ArrayList<>();
+        try{
+            final String GET_ALL_SPECIES_QUERY = "SELECT DISTINCT name FROM " + ISLAND_TABLE;
+            cur = db.rawQuery(GET_ALL_SPECIES_QUERY, null);
+            if(cur != null){
+                if(cur.moveToFirst()){
+                    do{
+                        nameList.add(cur.getString(cur.getColumnIndex(ISLAND_NAME)));
+                    }
+                    while(cur.moveToNext());
+                }
+            }
+        }
+        finally {
+            db.endTransaction();
+            assert cur != null;
+            cur.close();
+        }
+
+        return nameList;
     }
 
 

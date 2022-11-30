@@ -21,7 +21,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity implements DialogCloseListener{
+public class DailyTaskActivity extends AppCompatActivity implements DialogCloseListener{
 
     private DatabaseHandler db;
 
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
 
         tasksRecyclerView = findViewById(R.id.tasksRecyclerView);
         tasksRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        tasksAdapter = new ToDoAdapter(db,MainActivity.this, this);
+        tasksAdapter = new ToDoAdapter(db, DailyTaskActivity.this, this);
         tasksRecyclerView.setAdapter(tasksAdapter);
 
         ItemTouchHelper itemTouchHelper = new
