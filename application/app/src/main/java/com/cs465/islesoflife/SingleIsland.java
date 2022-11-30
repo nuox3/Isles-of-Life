@@ -9,12 +9,14 @@ import android.widget.ImageButton;
 import 	android.widget.TextView;
 import 	android.widget.ImageView;
 
+import com.cs465.islesoflife.Adapters.IslandAdapter;
 import com.cs465.islesoflife.Model.SpeciesModel;
 import com.cs465.islesoflife.Utils.DatabaseHandler;
 import com.cs465.islesoflife.Model.IslandModel;
 
 import net.penguincoders.doit.R;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -25,13 +27,14 @@ public class SingleIsland extends AppCompatActivity {
     private int islandListSize;
     private List<SpeciesModel> speciesList;
     private int speciesListSize;
+    IslandAdapter islandAdapter;
     int curIslandIdx;
 
     protected void setIslandView(){
         final TextView islandName = (TextView) findViewById(R.id.islandName);
         final ImageView islandImage = (ImageView) findViewById(R.id.toIslandDetail);
         final ImageView Species234 = (ImageView) findViewById(R.id.level234);
-        // TODO: species569
+        final ImageView Species569 = (ImageView) findViewById(R.id.level569);
         // TODO: species7
         // TODO: species8
         // TODO: species10
@@ -45,26 +48,38 @@ public class SingleIsland extends AppCompatActivity {
         speciesList = db.getAllSpeciesOnIsland(islandList.get(curIslandIdx).getIslandId());
         speciesListSize = islandList.size();
 
-        int speciesResource;
+        int speciesResource234;
+        int speciesResource569;
 
         switch (curIslandLevel) {
-            case 2:
+            case 2: // bird egg
                 if(speciesListSize != 0) {
-                    speciesResource = getResources().getIdentifier(speciesList.get(0).getImagePath(), null, getPackageName());
-                    Species234.setImageResource(speciesResource);
+                    speciesResource234 = getResources().getIdentifier(speciesList.get(0).getImagePath(), null, getPackageName());
+                    Species234.setImageResource(speciesResource234);
+                    Species569.setImageResource(android.R.color.transparent);
                 }
                 break;
-            case 3:
-                speciesResource = getResources().getIdentifier(speciesList.get(1).getImagePath(), null, getPackageName());
-                Species234.setImageResource(speciesResource);
+            case 3: // bird child
+                speciesResource234 = getResources().getIdentifier(speciesList.get(1).getImagePath(), null, getPackageName());
+                Species234.setImageResource(speciesResource234);
+                Species569.setImageResource(android.R.color.transparent);
                 break;
-            case 4:
-                speciesResource = getResources().getIdentifier(speciesList.get(2).getImagePath(), null, getPackageName());
-                Species234.setImageResource(speciesResource);
+            case 4: // bird adult
+                speciesResource234 = getResources().getIdentifier(speciesList.get(2).getImagePath(), null, getPackageName());
+                Species234.setImageResource(speciesResource234);
+                Species569.setImageResource(android.R.color.transparent);
                 break;
-            case 5:
+            case 5: // bird adult、sapling tree
+                speciesResource234 = getResources().getIdentifier(speciesList.get(2).getImagePath(), null, getPackageName());
+                Species234.setImageResource(speciesResource234);
+                speciesResource569 = getResources().getIdentifier(speciesList.get(3).getImagePath(), null, getPackageName());
+                Species569.setImageResource(speciesResource569);
                 break;
-            case 6:
+            case 6: // bird adult、juvenile tree
+                speciesResource234 = getResources().getIdentifier(speciesList.get(2).getImagePath(), null, getPackageName());
+                Species234.setImageResource(speciesResource234);
+                speciesResource569 = getResources().getIdentifier(speciesList.get(4).getImagePath(), null, getPackageName());
+                Species569.setImageResource(speciesResource569);
                 break;
             case 7:
                 break;
@@ -85,6 +100,7 @@ public class SingleIsland extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.single_island);
         Objects.requireNonNull(getSupportActionBar()).hide();
+
 
         db = new DatabaseHandler(this);
         db.openDatabase();
@@ -163,4 +179,9 @@ public class SingleIsland extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setIslandView();
+    }
 }

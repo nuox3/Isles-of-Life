@@ -90,6 +90,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
                         Bundle para = new Bundle();
                         para.putInt("curLevel", level);
                         para.putInt("curIslandIdx", db.getIslandId(item.getCategory()));
+                        para.putString("curIslandName", item.getCategory());
 
                         intent.setClass(context, LevelUp.class);
                         intent.putExtras(para);

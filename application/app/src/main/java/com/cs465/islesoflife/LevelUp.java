@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -25,8 +26,9 @@ public class LevelUp extends AppCompatActivity implements SpeciesChoiceAdapter.A
     private List<SpeciesModel> speciesList;
     private int speciesListSize;
     private DatabaseHandler db;
-    private int curLevel;
-    private int curIslandIdx;
+    private int curLevel = 4;
+    private int curIslandIdx = 2;
+    private String curIslandName = "Happiness Island";
     SpeciesChoiceAdapter speciesAdapter;
     private int curChoice;
 
@@ -39,12 +41,13 @@ public class LevelUp extends AppCompatActivity implements SpeciesChoiceAdapter.A
         if(b != null) {
             curLevel = b.getInt("curLevel");
             curIslandIdx = b.getInt("curIslandIdx");
+            curIslandName = b.getString("curIslandName");
         }
 
         db = new DatabaseHandler(this);
         db.openDatabase();
 
-        speciesList = db.getAllSpeciesAtSameLevel(curLevel); //TODO
+        speciesList = db.getAllSpeciesAtSameLevel(curLevel);
         speciesListSize = speciesList.size();
 
         curChoice = speciesList.get(0).getSpeciesId();
@@ -53,6 +56,12 @@ public class LevelUp extends AppCompatActivity implements SpeciesChoiceAdapter.A
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         speciesAdapter = new SpeciesChoiceAdapter(speciesList, this, LevelUp.this);
         recyclerView.setAdapter(speciesAdapter);
+
+        final TextView island_name = (TextView) findViewById(R.id.island_name);
+        final TextView island_level = (TextView) findViewById(R.id.island_level);
+
+        island_name.setText(curIslandName);
+        island_level.setText("Level " + String.valueOf(curLevel - 1) + " ---> Level " + String.valueOf(curLevel));
 
         Button confirm_button = (Button) findViewById(R.id.confirm);
 

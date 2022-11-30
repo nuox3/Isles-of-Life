@@ -8,7 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
+        android:gravity="top"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp">
@@ -21,8 +21,19 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/island_name"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="Happiness Island"
+                android:textAlignment="center"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/island_level"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:textSize="15dp"
                 android:gravity="center"
                 android:text="Level 2 ---> Level 3"
                 android:textAlignment="center"
@@ -42,7 +53,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="480dp"
+            android:layout_height="470dp"
             android:gravity="center_horizontal"
             android:orientation="vertical">
                 <ScrollView

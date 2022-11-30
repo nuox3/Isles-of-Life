@@ -40,6 +40,7 @@ public class IslandDetail  extends AppCompatActivity {
         final ImageView islandImage = (ImageView) findViewById(R.id.toIslandDetail);
         final ImageView Species234 = (ImageView) findViewById(R.id.level234);
         // TODO: species569
+        final ImageView Species569 = (ImageView) findViewById(R.id.level569);
         // TODO: species7
         // TODO: species8
         // TODO: species10
@@ -49,26 +50,38 @@ public class IslandDetail  extends AppCompatActivity {
 
         int curIslandLevel = islandList.get(curIslandIdx).getLevel();
 
-        int speciesResource;
+        int speciesResource234;
+        int speciesResource569;
 
         switch (curIslandLevel) {
-            case 2:
+            case 2: // bird egg
                 if(speciesListSize != 0) {
-                    speciesResource = getResources().getIdentifier(speciesList.get(0).getImagePath(), null, getPackageName());
-                    Species234.setImageResource(speciesResource);
+                    speciesResource234 = getResources().getIdentifier(speciesList.get(0).getImagePath(), null, getPackageName());
+                    Species234.setImageResource(speciesResource234);
+                    Species569.setImageResource(android.R.color.transparent);
                 }
                 break;
-            case 3:
-                speciesResource = getResources().getIdentifier(speciesList.get(1).getImagePath(), null, getPackageName());
-                Species234.setImageResource(speciesResource);
+            case 3: // bird child
+                speciesResource234 = getResources().getIdentifier(speciesList.get(1).getImagePath(), null, getPackageName());
+                Species234.setImageResource(speciesResource234);
+                Species569.setImageResource(android.R.color.transparent);
                 break;
-            case 4:
-                speciesResource = getResources().getIdentifier(speciesList.get(2).getImagePath(), null, getPackageName());
-                Species234.setImageResource(speciesResource);
+            case 4: // bird adult
+                speciesResource234 = getResources().getIdentifier(speciesList.get(2).getImagePath(), null, getPackageName());
+                Species234.setImageResource(speciesResource234);
+                Species569.setImageResource(android.R.color.transparent);
                 break;
-            case 5:
+            case 5: // bird adult、sapling tree
+                speciesResource234 = getResources().getIdentifier(speciesList.get(2).getImagePath(), null, getPackageName());
+                Species234.setImageResource(speciesResource234);
+                speciesResource569 = getResources().getIdentifier(speciesList.get(3).getImagePath(), null, getPackageName());
+                Species569.setImageResource(speciesResource569);
                 break;
-            case 6:
+            case 6: // bird adult、juvenile tree
+                speciesResource234 = getResources().getIdentifier(speciesList.get(2).getImagePath(), null, getPackageName());
+                Species234.setImageResource(speciesResource234);
+                speciesResource569 = getResources().getIdentifier(speciesList.get(4).getImagePath(), null, getPackageName());
+                Species569.setImageResource(speciesResource569);
                 break;
             case 7:
                 break;
