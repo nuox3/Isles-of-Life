@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.cs465.islesoflife.Adapters.SpeciesAdapter;
 import com.cs465.islesoflife.Adapters.IslandAdapter;
 import com.cs465.islesoflife.Model.IslandModel;
 import com.cs465.islesoflife.Utils.DatabaseHandler;

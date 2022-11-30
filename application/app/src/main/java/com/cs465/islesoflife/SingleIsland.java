@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import 	android.widget.TextView;
 import 	android.widget.ImageView;
 
+import com.cs465.islesoflife.Model.SpeciesModel;
 import com.cs465.islesoflife.Utils.DatabaseHandler;
 import com.cs465.islesoflife.Model.IslandModel;
 
@@ -22,7 +23,62 @@ public class SingleIsland extends AppCompatActivity {
     private DatabaseHandler db;
     private List<IslandModel> islandList;
     private int islandListSize;
+    private List<SpeciesModel> speciesList;
+    private int speciesListSize;
     int curIslandIdx;
+
+    protected void setIslandView(){
+        final TextView islandName = (TextView) findViewById(R.id.islandName);
+        final ImageView islandImage = (ImageView) findViewById(R.id.toIslandDetail);
+        final ImageView Species234 = (ImageView) findViewById(R.id.level234);
+        // TODO: species569
+        // TODO: species7
+        // TODO: species8
+        // TODO: species10
+
+        islandName.setText(islandList.get(curIslandIdx).getName());
+        int imageResource = getResources().getIdentifier(islandList.get(curIslandIdx).getImagePath(), null, getPackageName());
+        islandImage.setImageResource(imageResource);
+
+        int curIslandLevel = islandList.get(curIslandIdx).getLevel();
+
+        speciesList = db.getAllSpeciesOnIsland(islandList.get(curIslandIdx).getIslandId());
+        speciesListSize = islandList.size();
+
+        int speciesResource;
+
+        switch (curIslandLevel) {
+            case 2:
+                if(speciesListSize != 0) {
+                    speciesResource = getResources().getIdentifier(speciesList.get(0).getImagePath(), null, getPackageName());
+                    Species234.setImageResource(speciesResource);
+                }
+                break;
+            case 3:
+                speciesResource = getResources().getIdentifier(speciesList.get(1).getImagePath(), null, getPackageName());
+                Species234.setImageResource(speciesResource);
+                break;
+            case 4:
+                speciesResource = getResources().getIdentifier(speciesList.get(2).getImagePath(), null, getPackageName());
+                Species234.setImageResource(speciesResource);
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+            case 9:
+                break;
+            case 10:
+                break;
+            default:
+                break;
+        }
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,15 +96,8 @@ public class SingleIsland extends AppCompatActivity {
         islandList = db.getAllIslands();
         islandListSize = islandList.size();
 
-        final TextView islandName = (TextView) findViewById(R.id.islandName);
-        final ImageView islandImage = (ImageView) findViewById(R.id.toIslandDetail);
-
-        if(islandListSize > 0) {
-            islandName.setText(islandList.get(curIslandIdx).getName());
-
-            int imageResource = getResources().getIdentifier(islandList.get(curIslandIdx).getImagePath(), null, getPackageName());
-            islandImage.setImageResource(imageResource);
-        }
+        if(islandListSize > 0)
+            setIslandView();
 
         // change image and text content
         ImageButton btn_to_left_island = (ImageButton) findViewById(R.id.toLeftIsland);
@@ -59,9 +108,7 @@ public class SingleIsland extends AppCompatActivity {
             public void onClick(View v) {
                 if(curIslandIdx > 0){
                     curIslandIdx--;
-                    islandName.setText(islandList.get(curIslandIdx).getName());
-                    int imageResource = getResources().getIdentifier(islandList.get(curIslandIdx).getImagePath(), null, getPackageName());
-                    islandImage.setImageResource(imageResource);
+                    setIslandView();
                 }
             }
         });
@@ -71,9 +118,7 @@ public class SingleIsland extends AppCompatActivity {
             public void onClick(View v) {
                 if(curIslandIdx < islandListSize - 1){
                     curIslandIdx++;
-                    islandName.setText(islandList.get(curIslandIdx).getName());
-                    int imageResource = getResources().getIdentifier(islandList.get(curIslandIdx).getImagePath(), null, getPackageName());
-                    islandImage.setImageResource(imageResource);
+                    setIslandView();
                 }
             }
         });

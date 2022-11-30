@@ -12,18 +12,18 @@ import java.util.ArrayList;
 
 import net.penguincoders.doit.R;
 
-public class SpeciesAdapter extends RecyclerView.Adapter<SpeciesAdapter.ViewHolder> {
+public class SpeciesNameAdapter extends RecyclerView.Adapter<SpeciesNameAdapter.ViewHolder> {
 
     ArrayList<String> speciesList;
 
-    public SpeciesAdapter(ArrayList<String> speciesList) {
+    public SpeciesNameAdapter(ArrayList<String> speciesList) {
         this.speciesList = speciesList;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.single_specie, parent, false);
+                .inflate(R.layout.single_specie_name, parent, false);
         return new ViewHolder(view);
     }
 
