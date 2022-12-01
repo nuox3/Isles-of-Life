@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:fillViewport="false">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bk">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -11,15 +17,16 @@
         android:orientation="vertical">
 
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
 
             <RelativeLayout
                 android:layout_width="200dp"
-                android:layout_height="200dp">
+                android:layout_height="200dp"
+                android:layout_marginLeft="30dp">
 
                 <ProgressBar
                     android:layout_width="160dp"
@@ -61,7 +68,9 @@
 
             <RelativeLayout
                 android:layout_width="200dp"
-                android:layout_height="200dp">
+                android:layout_height="200dp"
+                android:layout_marginLeft="200dp"
+                android:layout_marginTop="220dp">
 
                 <ProgressBar
                     android:layout_width="160dp"
@@ -101,16 +110,17 @@
                 </TextView>
             </RelativeLayout>
 
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <RelativeLayout
                 android:layout_width="200dp"
                 android:layout_height="200dp"
-                android:layout_gravity="center_vertical">
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="440dp">
 
                 <ProgressBar
                     android:layout_width="160dp"
@@ -136,8 +146,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_centerInParent="true"
-                    android:background="@drawable/sand_island_5">
-                </ImageButton>
+                    android:background="@drawable/sand_island_5"></ImageButton>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -153,7 +162,8 @@
             <RelativeLayout
                 android:layout_width="200dp"
                 android:layout_height="200dp"
-                android:layout_gravity="center_vertical">
+                android:layout_marginLeft="200dp"
+                android:layout_marginTop="660dp">
 
                 <ProgressBar
                     android:layout_width="160dp"
@@ -179,8 +189,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_centerInParent="true"
-                    android:background="@drawable/sand_island_1">
-                </ImageButton>
+                    android:background="@drawable/sand_island_1"></ImageButton>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -191,35 +200,47 @@
                     android:layout_centerHorizontal="true"
                     android:textColor="@color/black">
                 </TextView>
-
             </RelativeLayout>
+        </RelativeLayout>
 
-        </LinearLayout>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/nav"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/add_button"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true">
-        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+            android:gravity="bottom">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/calendar"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true">
-        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/add_button"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true">
+            </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/checklist"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true">
-        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/calendar"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true">
+            </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/checklist"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true">
+            </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+        </RelativeLayout>
+
+
+
+
     </RelativeLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
