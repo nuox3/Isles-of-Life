@@ -42,7 +42,7 @@ public class DailyTaskActivity extends AppCompatActivity implements DialogCloseL
 
         tasksRecyclerView = findViewById(R.id.tasksRecyclerView);
         tasksRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        tasksAdapter = new ToDoAdapter(db, DailyTaskActivity.this);
+        tasksAdapter = new ToDoAdapter(db, DailyTaskActivity.this, this);
         tasksRecyclerView.setAdapter(tasksAdapter);
 
         ItemTouchHelper itemTouchHelper = new

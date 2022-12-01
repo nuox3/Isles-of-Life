@@ -2,7 +2,6 @@ package com.cs465.islesoflife.Model;
 
 public class SpeciesModel {
     private int speciesId;
-    private int islandId;
     private int level;
     private String name;
     private String imagePath;
@@ -13,14 +12,6 @@ public class SpeciesModel {
 
     public void setSpeciesId(int speciesId) {
         this.speciesId = speciesId;
-    }
-
-    public int getIslandId() {
-        return islandId;
-    }
-
-    public void setIslandId(int islandId) {
-        this.islandId = islandId;
     }
 
     public int getLevel() {

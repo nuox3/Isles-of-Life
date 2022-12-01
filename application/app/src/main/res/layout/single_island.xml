@@ -93,15 +93,41 @@
                 android:layout_marginTop="150dp"
                 android:id="@+id/toLeftIsland"
                 />
-            <ImageButton
-                android:layout_width="300dp"
-                android:layout_height="350dp"
-                android:scaleType="fitCenter"
-                android:layout_gravity="center"
-                android:src="@drawable/island_example"
-                android:background="#00000000"
-                android:id="@+id/toIslandDetail"
-                />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+                <ImageButton
+                    android:layout_width="300dp"
+                    android:layout_height="350dp"
+                    android:scaleType="fitCenter"
+                    android:gravity="center"
+                    android:src="@drawable/sand_island_1"
+                    android:background="#00000000"
+                    android:id="@+id/toIslandDetail" />
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="70dp"
+                    android:scaleType="fitCenter"
+                    android:gravity="center"
+                    android:layout_marginTop= "180dp"
+                    android:layout_marginLeft= "30dp"
+                    android:background="#00000000"
+                    android:src="@drawable/island_egg_purple"
+                    android:id="@+id/level234"
+                    />
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="70dp"
+                    android:scaleType="fitXY"
+                    android:gravity="center"
+                    android:layout_marginTop= "167dp"
+                    android:layout_marginLeft= "70dp"
+                    android:background="#00000000"
+                    android:src="@drawable/adult_palm_tree"
+                    android:id="@+id/level569"
+                    />
+            </RelativeLayout>
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
