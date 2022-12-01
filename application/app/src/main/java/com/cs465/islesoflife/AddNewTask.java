@@ -87,6 +87,7 @@ public class AddNewTask extends BottomSheetDialogFragment{
         newTaskText = Objects.requireNonNull(getView()).findViewById(R.id.newTaskText);
         newTaskCategory = getView().findViewById(R.id.newTaskCategory);
         newTaskDueDate = getView().findViewById(R.id.newTaskDueDate);
+//        newTaskDueDate = Objects.requireNonNull(getView()).findViewById(R.id.newTaskDueDate);
         newTaskDueTime = Objects.requireNonNull(getView()).findViewById(R.id.newTaskDueTime);
         newTaskSaveButton = getView().findViewById(R.id.newTaskButton);
 
@@ -148,6 +149,9 @@ public class AddNewTask extends BottomSheetDialogFragment{
             isUpdate = true;
             String task = bundle.getString("task");
             newTaskText.setText(task);
+
+//            String category = bundle.getString("category");
+//            newTaskCategory.setText(category);
 
             String taskDueDate = bundle.getString("taskDueDate");
             newTaskDueDate.setText(taskDueDate);

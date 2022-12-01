@@ -17,13 +17,11 @@
             android:textSize="32sp"
             android:text="Daily tasks" />
 
-
     <TextView
         android:id="@+id/dailyTasksToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tasksText"
-        android:layout_marginTop="18dp"
         android:background="#808080"
         android:drawableLeft="@drawable/ic_baseline_calendar"
         android:drawablePadding="10dp"
@@ -39,9 +37,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/dailyTasksToolbar"
-        android:layout_marginTop="1dp"
         android:nestedScrollingEnabled="true"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"

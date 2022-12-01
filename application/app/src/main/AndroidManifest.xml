@@ -14,7 +14,6 @@
         <activity android:name="com.cs465.islesoflife.SplashActivity"/>
         <activity android:name="com.cs465.islesoflife.DailyTaskActivity" />
         <activity android:name="com.cs465.islesoflife.AddNewIsland" />
-        <activity android:name="com.cs465.islesoflife.CalendarViewActivity" />
         <activity android:name="com.cs465.islesoflife.Homepage" >
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
