@@ -1,30 +1,15 @@
 package com.cs465.islesoflife;
 
 import android.app.Activity;
-import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,10 +21,8 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import net.penguincoders.doit.R;
 
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 public class DisplayTasksBasedOnDate extends BottomSheetDialogFragment {
 
@@ -51,11 +34,7 @@ public class DisplayTasksBasedOnDate extends BottomSheetDialogFragment {
     private TasksOnDateAdapter tasksAdapter;
     private List<ToDoModel> taskList;
     private static String date;
-    private static Context _con;
 
-
-    private Spinner sp1;
-    List<String> data;    //列表框的选项
 
 
     public static DisplayTasksBasedOnDate newInstance(String s){
@@ -90,12 +69,11 @@ public class DisplayTasksBasedOnDate extends BottomSheetDialogFragment {
 
         tasksRecyclerView = getActivity().findViewById(R.id.tasksBasedOnDate);
         tasksRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-//        tasksAdapter = new TasksOnDateAdapter(db, DisplayTasksBasedOnDate.this);
         tasksRecyclerView.setAdapter(tasksAdapter);
 
 
         ItemTouchHelper itemTouchHelper = new
-                ItemTouchHelper(new TaskItemTouchHelper(tasksAdapter));
+                ItemTouchHelper(new TaskOnDateItemTouchHelper(tasksAdapter));
         itemTouchHelper.attachToRecyclerView(tasksRecyclerView);
 
 //        System.out.println(monthYearFromDate(selectedDate).toString() + "-" + dayText);

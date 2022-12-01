@@ -7,10 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -19,12 +17,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.cs465.islesoflife.Adapters.CalendarAdapter;
 import com.cs465.islesoflife.Adapters.TasksOnDateAdapter;
-import com.cs465.islesoflife.Adapters.ToDoAdapter;
 import com.cs465.islesoflife.Model.ToDoModel;
 import com.cs465.islesoflife.Utils.DatabaseHandler;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import net.penguincoders.doit.R;
 
@@ -139,10 +134,7 @@ public class CalendarViewActivity extends AppCompatActivity implements DialogClo
     {
         if(!dayText.equals(""))
         {
-//            DisplayTasksBasedOnDate.newInstance(monthYearFromDate(selectedDate).toString() + "-" + dayText).show(getSupportFragmentManager(), DisplayTasksBasedOnDate.TAG);
-//            mDialog  = new BottomSheetDialog(this);
             View view = getLayoutInflater().inflate(R.layout.tasks_date, null);
-//            mDialog.setContentView(R.layout.tasks_date);
             setContentView(view);
 
             db = new DatabaseHandler(this);
@@ -155,10 +147,10 @@ public class CalendarViewActivity extends AppCompatActivity implements DialogClo
 
 
             ItemTouchHelper itemTouchHelper = new
-                    ItemTouchHelper(new TaskItemTouchHelper(tasksAdapter));
+                    ItemTouchHelper(new TaskOnDateItemTouchHelper(tasksAdapter));
             itemTouchHelper.attachToRecyclerView(tasksRecyclerView);
 
-            System.out.println(monthYearFromDate(selectedDate).toString() + "-" + dayText);
+//            System.out.println(monthYearFromDate(selectedDate).toString() + "-" + dayText);
             taskList = db.getAllTasksBasedOnDueDate(monthYearFromDate(selectedDate).toString() + "-" + dayText);
             Collections.reverse(taskList);
 
@@ -174,7 +166,6 @@ public class CalendarViewActivity extends AppCompatActivity implements DialogClo
                     startActivity(intent);
                 }
             });
-//            mDialog.show();
 
 
 //            AlertDialog.Builder builder=new AlertDialog.Builder(this);

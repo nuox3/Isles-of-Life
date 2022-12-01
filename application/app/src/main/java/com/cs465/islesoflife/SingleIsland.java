@@ -1,28 +1,41 @@
 package com.cs465.islesoflife;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageButton;
 import 	android.widget.TextView;
 import 	android.widget.ImageView;
 
 import com.cs465.islesoflife.Adapters.IslandAdapter;
+import com.cs465.islesoflife.Adapters.TasksOnDateAdapter;
+import com.cs465.islesoflife.Adapters.TasksOnIslandAdapter;
 import com.cs465.islesoflife.Model.SpeciesModel;
+import com.cs465.islesoflife.Model.ToDoModel;
 import com.cs465.islesoflife.Utils.DatabaseHandler;
 import com.cs465.islesoflife.Model.IslandModel;
 
 import net.penguincoders.doit.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class SingleIsland extends AppCompatActivity {
+public class SingleIsland extends AppCompatActivity implements DialogCloseListener{
 
     private DatabaseHandler db;
+    private RecyclerView tasksRecyclerView;
+    private TasksOnIslandAdapter tasksAdapter;
+    private List<ToDoModel> taskList;
+
     private List<IslandModel> islandList;
     private int islandListSize;
     private List<SpeciesModel> speciesList;
@@ -147,9 +160,8 @@ public class SingleIsland extends AppCompatActivity {
         btn_to_new_task.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(SingleIsland.this, DailyTaskActivity.class);
-                startActivity(intent);
+                setLayout();
+
             }
         });
 
@@ -183,5 +195,44 @@ public class SingleIsland extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         setIslandView();
+    }
+
+    public void setLayout(){
+        View view = getLayoutInflater().inflate(R.layout.tasks_date, null);
+        setContentView(view);
+        db = new DatabaseHandler(this);
+        db.openDatabase();
+
+        tasksRecyclerView = findViewById(R.id.tasksBasedOnDate);
+        tasksRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        tasksAdapter = new TasksOnIslandAdapter(db, SingleIsland.this);
+        tasksRecyclerView.setAdapter(tasksAdapter);
+
+
+        ItemTouchHelper itemTouchHelper = new
+                ItemTouchHelper(new TaskOnIslandItemTouchHelper(tasksAdapter));
+        itemTouchHelper.attachToRecyclerView(tasksRecyclerView);
+
+        System.out.println(islandList.get(curIslandIdx).getName());
+        taskList = db.getAllTasksBasedOnIslandName(islandList.get(curIslandIdx).getName());
+        Collections.reverse(taskList);
+
+        tasksAdapter.setTasks(taskList);
+
+        ImageButton btn_to_calendar = (ImageButton) findViewById(R.id.toCalendar);
+
+        btn_to_calendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(SingleIsland.this, Homepage.class);
+                startActivity(intent);
+            }
+        });
+
+    }
+    @Override
+    public void handleDialogClose(DialogInterface dialog) {
+
     }
 }

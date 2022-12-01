@@ -1,27 +1,17 @@
 package com.cs465.islesoflife;
 
-import android.content.DialogInterface;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cs465.islesoflife.Adapters.TasksOnDateAdapter;
+import com.cs465.islesoflife.Adapters.TasksOnIslandAdapter;
 
-import net.penguincoders.doit.R;
+public class TaskOnIslandItemTouchHelper extends ItemTouchHelper.SimpleCallback {
 
-public class TaskItemTouchHelper extends ItemTouchHelper.SimpleCallback {
+    private TasksOnIslandAdapter adapter;
 
-    private TasksOnDateAdapter adapter;
-
-    public TaskItemTouchHelper(TasksOnDateAdapter adapter) {
+    public TaskOnIslandItemTouchHelper(TasksOnIslandAdapter adapter) {
         super(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
         this.adapter = adapter;
     }

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.view.View;
 
 import com.cs465.islesoflife.Model.ToDoModel;
 import com.cs465.islesoflife.Model.IslandModel;
@@ -73,6 +74,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public DatabaseHandler(Context context) {
         super(context, NAME, null, VERSION);
     }
+
 
     public void insertDefaultData(){
         // Islands Data
@@ -350,6 +352,39 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.beginTransaction();
         try{
             final String GET_ALL_TASKS_QUERY = "SELECT * FROM " + TODO_TABLE + " WHERE taskDueDate=\"" + taskDate+"\"";
+            cur = db.rawQuery(GET_ALL_TASKS_QUERY, null);
+            if(cur != null){
+                if(cur.moveToFirst()){
+                    do{
+                        ToDoModel task = new ToDoModel();
+                        task.setId(cur.getInt(cur.getColumnIndex(ID)));
+                        task.setTask(cur.getString(cur.getColumnIndex(TASK)));
+                        task.setCategory(cur.getString(cur.getColumnIndex(CATEGORY)));
+                        task.setImportance(cur.getString(cur.getColumnIndex(IMPORTANCE)));
+                        task.setTaskCreatedDate(cur.getString(cur.getColumnIndex(TASK_CREATED_DATE)));
+                        task.setTaskDueDate(cur.getString(cur.getColumnIndex(TASK_DUE_DATE)));
+                        task.setTaskDueTime(cur.getString(cur.getColumnIndex(TASK_DUE_TIME)));
+                        task.setStatus(cur.getInt(cur.getColumnIndex(STATUS)));
+                        taskList.add(task);
+                    }
+                    while(cur.moveToNext());
+                }
+            }
+        }
+        finally {
+            db.endTransaction();
+            assert cur != null;
+            cur.close();
+        }
+        return taskList;
+    }
+
+    public List<ToDoModel> getAllTasksBasedOnIslandName(String name){
+        List<ToDoModel> taskList = new ArrayList<>();
+        Cursor cur = null;
+        db.beginTransaction();
+        try{
+            final String GET_ALL_TASKS_QUERY = "SELECT * FROM " + TODO_TABLE + " WHERE category=\"" + name+"\"";
             cur = db.rawQuery(GET_ALL_TASKS_QUERY, null);
             if(cur != null){
                 if(cur.moveToFirst()){
