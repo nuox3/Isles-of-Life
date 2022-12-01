@@ -1,0 +1,25 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Islesoflife" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">#659900</item>
+        <item name="colorPrimaryVariant">#659900</item>
+        <item name="colorOnPrimary">#659900</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">#659900</item>
+        <item name="colorSecondaryVariant">@color/purple_200</item>
+        <item name="colorOnSecondary">#FFFFFFFF</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">#FF659900</item>
+
+    </style>
+
+    <style name="Theme.Islesoflife.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Islesoflife.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Islesoflife.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>
