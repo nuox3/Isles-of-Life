@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cs465.islesoflife.Model.IslandModel;
+import com.cs465.islesoflife.Model.ToDoModel;
 import com.cs465.islesoflife.SingleIsland;
 
 import java.util.List;
@@ -80,5 +81,10 @@ public class IslandAdapter extends RecyclerView.Adapter<IslandAdapter.ViewHolder
             islandImage = (ImageButton) holder.findViewById(R.id.islandImage);
             islandLevel = (TextView) holder.findViewById(R.id.level);
         }
+    }
+
+    public void setIslands(List<IslandModel> islandList) {
+        this.islandList = islandList;
+        notifyDataSetChanged();
     }
 }

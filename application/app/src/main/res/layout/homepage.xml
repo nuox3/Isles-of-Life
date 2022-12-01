@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/bk">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -19,7 +20,9 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
+                android:layout_centerHorizontal="true"/>
 
         </LinearLayout>
 
@@ -27,12 +30,11 @@
             android:id="@+id/toAddIsland"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/add_button"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:backgroundTint="#00000000">
-        </ImageButton>
+            android:layout_alignParentBottom="true"
+            android:backgroundTint="#00000000"
+            android:scaleType="fitXY"
+            android:src="@drawable/add_button"></ImageButton>
 
         <ImageButton
             android:id="@+id/toCalendar"

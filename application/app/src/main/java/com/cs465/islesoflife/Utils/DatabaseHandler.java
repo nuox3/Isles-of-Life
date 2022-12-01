@@ -213,6 +213,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.insert(TODO_TABLE, null, cv);
     }
 
+    public void insertIsland(IslandModel island){
+
+        ContentValues cv = new ContentValues();
+        cv.put(ISLAND_ID, island.getIslandId());
+        cv.put(ISLAND_NAME, island.getName());
+        cv.put(ISLAND_LEVEL, island.getLevel());
+        cv.put(ISLAND_BASE, island.getBase());
+        cv.put(ISLAND_IMAGE_PATH, island.getImagePath());
+        cv.put(ISLAND_EXP, island.getEXP());
+
+        db.insert(ISLAND_TABLE, null, cv);
+    }
+
 
     public void insertContain(int islandId, int speciesId){
         ContentValues cv = new ContentValues();
@@ -402,6 +415,31 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return exp;
     }
 
+    public int getIslandNumber(){
+        Cursor cur = null;
+        db.beginTransaction();
+        int number = 0;
+        try{
+            final String GET_ALL_SPECIES_QUERY = "SELECT * FROM " + ISLAND_TABLE;
+            cur = db.rawQuery(GET_ALL_SPECIES_QUERY, null);
+            if(cur != null){
+                if(cur.moveToFirst()){
+                    do{
+                        number = number + 1;
+                    }
+                    while(cur.moveToNext());
+                }
+            }
+        }
+        finally {
+            db.endTransaction();
+            assert cur != null;
+            cur.close();
+        }
+
+        return number;
+    }
+
 
     public int getIslandId(String islandName){
         Cursor cur = null;
@@ -477,6 +515,39 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
 
         return nameList;
+    }
+
+    public List<ToDoModel> getAllTasksBasedOnIslandName(String name){
+        List<ToDoModel> taskList = new ArrayList<>();
+        Cursor cur = null;
+        db.beginTransaction();
+        try{
+            final String GET_ALL_TASKS_QUERY = "SELECT * FROM " + TODO_TABLE + " WHERE category=\"" + name+"\"";
+            cur = db.rawQuery(GET_ALL_TASKS_QUERY, null);
+            if(cur != null){
+                if(cur.moveToFirst()){
+                    do{
+                        ToDoModel task = new ToDoModel();
+                        task.setId(cur.getInt(cur.getColumnIndex(ID)));
+                        task.setTask(cur.getString(cur.getColumnIndex(TASK)));
+                        task.setCategory(cur.getString(cur.getColumnIndex(CATEGORY)));
+                        task.setImportance(cur.getString(cur.getColumnIndex(IMPORTANCE)));
+                        task.setTaskCreatedDate(cur.getString(cur.getColumnIndex(TASK_CREATED_DATE)));
+                        task.setTaskDueDate(cur.getString(cur.getColumnIndex(TASK_DUE_DATE)));
+                        task.setTaskDueTime(cur.getString(cur.getColumnIndex(TASK_DUE_TIME)));
+                        task.setStatus(cur.getInt(cur.getColumnIndex(STATUS)));
+                        taskList.add(task);
+                    }
+                    while(cur.moveToNext());
+                }
+            }
+        }
+        finally {
+            db.endTransaction();
+            assert cur != null;
+            cur.close();
+        }
+        return taskList;
     }
 
 

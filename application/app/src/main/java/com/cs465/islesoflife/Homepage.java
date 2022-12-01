@@ -1,10 +1,13 @@
 package com.cs465.islesoflife;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,10 +19,11 @@ import com.cs465.islesoflife.Utils.DatabaseHandler;
 
 import net.penguincoders.doit.R;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class Homepage extends AppCompatActivity {
+public class Homepage extends AppCompatActivity implements DialogCloseListener{
 
     RecyclerView recyclerView;
     private List<IslandModel> islandList;
@@ -38,6 +42,7 @@ public class Homepage extends AppCompatActivity {
 
         islandList = db.getAllIslands();
         islandListSize = islandList.size();
+        System.out.println(islandListSize);
 
         if(islandListSize == 0){
             db.insertDefaultData();
@@ -77,10 +82,17 @@ public class Homepage extends AppCompatActivity {
         btn_to_addnewisland.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(Homepage.this, AddNewIsland.class);
-                startActivity(intent);
+                AddNewIsland.newInstance().show(getSupportFragmentManager(), AddNewIsland.TAG);
             }
         });
     }
+
+    @Override
+    public void handleDialogClose(DialogInterface dialog){
+        islandList = db.getAllIslands();
+        Collections.reverse(islandList);
+        islandAdapter.setIslands(islandList);
+        islandAdapter.notifyDataSetChanged();
+    }
+
 }

@@ -9,7 +9,7 @@
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
         android:layout_gravity="top"
-        android:background="#19bdff"
+        android:background="@drawable/bk"
         />
     <LinearLayout
         android:layout_width="match_parent"
@@ -50,6 +50,7 @@
                 android:id="@+id/toDailyTask"
                 />
             <ImageButton
+                android:id="@+id/toCalendar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_baseline_calendar_month_24"

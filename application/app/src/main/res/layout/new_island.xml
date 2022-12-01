@@ -51,22 +51,23 @@
             android:gravity="center">
         </TextView>
 
+        <!--        <Button-->
+<!--            android:layout_width="300dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Indicate Your favorite color"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:textAllCaps="false"-->
+<!--            android:textSize="17sp"-->
+<!--            android:textStyle="bold">-->
+<!--        </Button>-->
+
+
         <EditText
+            android:id="@+id/newIslandName"
             android:layout_width="300dp"
             android:layout_height="60dp"
-            android:layout_gravity="center">
-        </EditText>
-        <Button
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:text="Indicate Your favorite color"
-            android:textColor="@color/white"
-            android:layout_gravity="center"
-            android:textAllCaps="false"
-            android:textSize="17sp"
-            android:textStyle="bold">
-        </Button>
-
+            android:layout_gravity="center"></EditText>
 
         <RelativeLayout
             android:layout_width="300dp"
@@ -81,11 +82,9 @@
                 android:layout_alignParentLeft="true"
                 android:text="Cancle"
                 android:textAllCaps="false"
+                android:textColor="@color/black"
                 android:textSize="20sp"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                >
-            </Button>
+                android:textStyle="bold"></Button>
 
             <Button
                 android:id="@+id/ok_button"
@@ -93,10 +92,9 @@
                 android:layout_height="60dp"
                 android:layout_alignParentRight="true"
                 android:text="OK"
+                android:textColor="@color/black"
                 android:textSize="20sp"
-                android:textColor="@color/white"
-                android:textStyle="bold">
-            </Button>
+                android:textStyle="bold"></Button>
 
         </RelativeLayout>
 
