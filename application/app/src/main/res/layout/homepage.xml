@@ -38,23 +38,21 @@
             android:id="@+id/toCalendar"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/calendar"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
-            android:backgroundTint="#00000000">
-        </ImageButton>
+            android:layout_alignParentBottom="true"
+            android:backgroundTint="#00000000"
+            android:scaleType="fitXY"
+            android:src="@drawable/calendar"></ImageButton>
 
         <ImageButton
             android:id="@+id/toTodoList"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/checklist"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:backgroundTint="#00000000">
-        </ImageButton>
+            android:backgroundTint="#00000000"
+            android:scaleType="fitXY"
+            android:src="@drawable/checklist"></ImageButton>
     </RelativeLayout>
 
 

@@ -3,10 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/ic_baseline_home.xml" value="0.23697916666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.23645833333333333" />
+        <entry key="app/src/main/res/layout/calendar_cell.xml" value="0.22282608695652173" />
+        <entry key="app/src/main/res/layout/calendar_view.xml" value="0.22282608695652173" />
+        <entry key="app/src/main/res/layout/daily_task.xml" value="0.2203125" />
         <entry key="app/src/main/res/layout/homepage.xml" value="0.23020833333333332" />
+        <entry key="app/src/main/res/layout/new_island.xml" value="0.22083333333333333" />
         <entry key="app/src/main/res/layout/new_task.xml" value="0.2734375" />
+        <entry key="app/src/main/res/layout/single_island.xml" value="0.22083333333333333" />
+        <entry key="app/src/main/res/layout/single_specie.xml" value="0.22083333333333333" />
         <entry key="app/src/main/res/layout/task_layout.xml" value="0.2203125" />
+        <entry key="app/src/main/res/layout/task_layout_based_on_date.xml" value="0.22083333333333333" />
+        <entry key="app/src/main/res/layout/tasks_date.xml" value="0.22083333333333333" />
       </map>
     </option>
   </component>

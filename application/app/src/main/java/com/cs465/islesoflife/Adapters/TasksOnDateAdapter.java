@@ -1,7 +1,6 @@
 package com.cs465.islesoflife.Adapters;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cs465.islesoflife.AddNewTask;
-import com.cs465.islesoflife.DailyTaskActivity;
+import com.cs465.islesoflife.CalendarViewActivity;
+import com.cs465.islesoflife.DisplayTasksBasedOnDate;
 import com.cs465.islesoflife.Model.ToDoModel;
 import com.cs465.islesoflife.Utils.DatabaseHandler;
 
@@ -22,13 +22,13 @@ import net.penguincoders.doit.R;
 
 import java.util.List;
 
-public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
+public class TasksOnDateAdapter extends RecyclerView.Adapter<TasksOnDateAdapter.ViewHolder> {
 
     private List<ToDoModel> todoList;
     private DatabaseHandler db;
-    private DailyTaskActivity activity;
+    private CalendarViewActivity activity;
 
-    public ToDoAdapter(DatabaseHandler db, DailyTaskActivity activity) {
+    public TasksOnDateAdapter(DatabaseHandler db, CalendarViewActivity activity) {
         this.db = db;
         this.activity = activity;
     }
@@ -95,9 +95,9 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
         return todoList.size();
     }
 
-    public Context getContext() {
-        return activity;
-    }
+//    public CalendarViewActivity getContext() {
+//        return activity;
+//    }
 
     public void setTasks(List<ToDoModel> todoList) {
         this.todoList = todoList;
@@ -122,7 +122,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
         bundle.putString("taskImportance", item.getImportance());
         AddNewTask fragment = new AddNewTask();
         fragment.setArguments(bundle);
-        fragment.show(activity.getSupportFragmentManager(), AddNewTask.TAG);
+//        fragment.show(activity.getSupportFragmentManager(), AddNewTask.TAG);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

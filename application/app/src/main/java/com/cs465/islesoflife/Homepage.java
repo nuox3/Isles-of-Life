@@ -61,16 +61,16 @@ public class Homepage extends AppCompatActivity {
             }
         });
 
-        /*ImageButton btn_to_calendar = (ImageButton) findViewById(R.id.toAddIsland);
+        ImageButton btn_to_calendar = (ImageButton) findViewById(R.id.toCalendar);
 
         btn_to_calendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(Homepage.this, Calendar.class);
+                intent.setClass(Homepage.this, CalendarViewActivity.class);
                 startActivity(intent);
             }
-        });*/
+        });
 
         ImageButton btn_to_addnewisland = (ImageButton) findViewById(R.id.toAddIsland);
 
