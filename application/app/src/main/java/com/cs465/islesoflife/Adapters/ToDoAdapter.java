@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cs465.islesoflife.AddNewTask;
-import com.cs465.islesoflife.MainActivity;
+import com.cs465.islesoflife.DailyTaskActivity;
 import com.cs465.islesoflife.Model.ToDoModel;
 import com.cs465.islesoflife.Utils.DatabaseHandler;
 
@@ -26,9 +26,9 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
 
     private List<ToDoModel> todoList;
     private DatabaseHandler db;
-    private MainActivity activity;
+    private DailyTaskActivity activity;
 
-    public ToDoAdapter(DatabaseHandler db, MainActivity activity) {
+    public ToDoAdapter(DatabaseHandler db, DailyTaskActivity activity) {
         this.db = db;
         this.activity = activity;
     }
@@ -71,10 +71,15 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
         holder.task.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                int currEXP = db.getIslandEXP(item.getCategory());
                 if (isChecked) {
                     db.updateStatus(item.getId(), 1);
+                    currEXP = currEXP + Integer.valueOf(item.getImportance());
+                    db.updateEXP(item.getCategory(), currEXP);
                 } else {
                     db.updateStatus(item.getId(), 0);
+                    currEXP = currEXP - Integer.valueOf(item.getImportance());
+                    db.updateEXP(item.getCategory(),currEXP);
                 }
             }
         });

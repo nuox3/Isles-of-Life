@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="380dp"
+            android:layout_gravity="center">
+
+            <ImageButton
+                android:id="@+id/previousIsland"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/arrow_back"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true">
+            </ImageButton>
+
+            <ImageView
+                android:id="@+id/imageSwitcher"
+                android:layout_width="300dp"
+                android:layout_height="380dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/sand_island_1">
+            </ImageView>
+
+            <ImageButton
+                android:id="@+id/nextIsland"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/arrow_forward"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true">
+            </ImageButton>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name of Island"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:gravity="center">
+        </TextView>
+
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center">
+        </EditText>
+        <Button
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="Indicate Your favorite color"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:textAllCaps="false"
+            android:textSize="17sp"
+            android:textStyle="bold">
+        </Button>
+
+
+        <RelativeLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <Button
+                android:id="@+id/cancel_button"
+                android:layout_width="120dp"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="true"
+                android:text="Cancle"
+                android:textAllCaps="false"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                >
+            </Button>
+
+            <Button
+                android:id="@+id/ok_button"
+                android:layout_width="120dp"
+                android:layout_height="60dp"
+                android:layout_alignParentRight="true"
+                android:text="OK"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:textStyle="bold">
+            </Button>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

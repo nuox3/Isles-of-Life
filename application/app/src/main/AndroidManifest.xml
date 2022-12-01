@@ -9,13 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.cs465.islesoflife.SplashActivity">
+        <activity android:name="com.cs465.islesoflife.SingleIsland"/>
+        <activity android:name="com.cs465.islesoflife.IslandDetail" />
+        <activity android:name="com.cs465.islesoflife.SplashActivity"/>
+        <activity android:name="com.cs465.islesoflife.DailyTaskActivity" />
+        <activity android:name="com.cs465.islesoflife.AddNewIsland" />
+        <activity android:name="com.cs465.islesoflife.Homepage" >
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        <activity android:name="com.cs465.islesoflife.MainActivity" />
     </application>
 
 </manifest>
