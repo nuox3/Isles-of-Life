@@ -150,7 +150,7 @@ public class CalendarViewActivity extends AppCompatActivity implements DialogClo
 
             tasksRecyclerView = findViewById(R.id.tasksBasedOnDate);
             tasksRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-            tasksAdapter = new TasksOnDateAdapter(db, CalendarViewActivity.this);
+            tasksAdapter = new TasksOnDateAdapter(db, CalendarViewActivity.this, this);
             tasksRecyclerView.setAdapter(tasksAdapter);
 
 

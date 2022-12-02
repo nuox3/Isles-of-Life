@@ -1,6 +1,8 @@
 package com.cs465.islesoflife.Adapters;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.cs465.islesoflife.AddNewTask;
 import com.cs465.islesoflife.CalendarViewActivity;
 //import com.cs465.islesoflife.IslandTasksActivity;
+import com.cs465.islesoflife.LevelUp;
 import com.cs465.islesoflife.Model.ToDoModel;
 import com.cs465.islesoflife.SingleIsland;
 import com.cs465.islesoflife.Utils.DatabaseHandler;
@@ -28,10 +31,12 @@ public class TasksOnIslandAdapter extends RecyclerView.Adapter<TasksOnIslandAdap
     private List<ToDoModel> todoList;
     private DatabaseHandler db;
     private SingleIsland activity;
+    private Context context;
 
-    public TasksOnIslandAdapter(DatabaseHandler db, SingleIsland activity) {
+    public TasksOnIslandAdapter(DatabaseHandler db, SingleIsland activity, Context context) {
         this.db = db;
         this.activity = activity;
+        this.context = context;
     }
 
 
@@ -77,15 +82,35 @@ public class TasksOnIslandAdapter extends RecyclerView.Adapter<TasksOnIslandAdap
                 if (isChecked) {
                     db.updateStatus(item.getId(), 1);
                     currEXP = currEXP + Integer.valueOf(item.getImportance());
+                    if(currEXP >= 100){
+                        currEXP = currEXP - 100;
+                        int level = db.getIslandLevel(item.getCategory());
+                        level += 1;
+                        db.updateLevel(item.getCategory(), level);
+
+                        Intent intent = new Intent();
+                        Bundle para = new Bundle();
+                        para.putInt("curLevel", level);
+                        para.putInt("curIslandIdx", db.getIslandId(item.getCategory()));
+                        para.putString("curIslandName", item.getCategory());
+
+                        intent.setClass(context, LevelUp.class);
+                        intent.putExtras(para);
+                        context.startActivity(intent);
+                    }
+
                     db.updateEXP(item.getCategory(), currEXP);
                 } else {
                     db.updateStatus(item.getId(), 0);
                     currEXP = currEXP - Integer.valueOf(item.getImportance());
+                    if(currEXP < 0)
+                        currEXP = 0;
                     db.updateEXP(item.getCategory(),currEXP);
                 }
             }
         });
     }
+
 
     private boolean toBoolean(int n) {
         return n != 0;

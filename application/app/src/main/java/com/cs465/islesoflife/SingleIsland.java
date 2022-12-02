@@ -217,7 +217,7 @@ public class SingleIsland extends AppCompatActivity implements DialogCloseListen
 
         tasksRecyclerView = findViewById(R.id.tasksBasedOnDate);
         tasksRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        tasksAdapter = new TasksOnIslandAdapter(db, SingleIsland.this);
+        tasksAdapter = new TasksOnIslandAdapter(db, SingleIsland.this, this);
         tasksRecyclerView.setAdapter(tasksAdapter);
 
 
