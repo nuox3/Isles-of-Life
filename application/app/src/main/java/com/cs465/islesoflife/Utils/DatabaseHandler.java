@@ -77,21 +77,21 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void insertDefaultData(){
         // Islands Data
         db.delete(ISLAND_TABLE, null, null);
-        ContentValues cv_island1 = new ContentValues();
-        cv_island1.put(ISLAND_NAME, "Fitness Island");
-        cv_island1.put(ISLAND_LEVEL, 2);
-        cv_island1.put(ISLAND_BASE, "Rock Island");
-        cv_island1.put(ISLAND_IMAGE_PATH, "@drawable/rock_island");
-        cv_island1.put(ISLAND_EXP, "96");
-        db.insert(ISLAND_TABLE, null, cv_island1);
-
-        ContentValues cv_island2 = new ContentValues();
-        cv_island2.put(ISLAND_NAME, "Happiness Island");
-        cv_island2.put(ISLAND_LEVEL, 4);
-        cv_island2.put(ISLAND_BASE, "Sand Island");
-        cv_island2.put(ISLAND_IMAGE_PATH, "@drawable/sand_island_1");
-        cv_island2.put(ISLAND_EXP, "97");
-        db.insert(ISLAND_TABLE, null, cv_island2);
+//        ContentValues cv_island1 = new ContentValues();
+//        cv_island1.put(ISLAND_NAME, "Fitness Island");
+//        cv_island1.put(ISLAND_LEVEL, 2);
+//        cv_island1.put(ISLAND_BASE, "Rock Island");
+//        cv_island1.put(ISLAND_IMAGE_PATH, "@drawable/rock_island");
+//        cv_island1.put(ISLAND_EXP, "96");
+//        db.insert(ISLAND_TABLE, null, cv_island1);
+//
+//        ContentValues cv_island2 = new ContentValues();
+//        cv_island2.put(ISLAND_NAME, "Happiness Island");
+//        cv_island2.put(ISLAND_LEVEL, 4);
+//        cv_island2.put(ISLAND_BASE, "Sand Island");
+//        cv_island2.put(ISLAND_IMAGE_PATH, "@drawable/sand_island_1");
+//        cv_island2.put(ISLAND_EXP, "97");
+//        db.insert(ISLAND_TABLE, null, cv_island2);
 
         // Species Data
         db.delete(SPECIES_TABLE, null, null);
@@ -150,25 +150,25 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.insert(SPECIES_TABLE, null, cv_species9);
 
         // Contain Data
-        ContentValues cv_contain1 = new ContentValues();
-        cv_contain1.put(CONTAIN_ISLAND_ID, 1);
-        cv_contain1.put(CONTAIN_SPECIES_ID, 1);
-        db.insert(CONTAIN_TABLE, null, cv_contain1);
-
-        ContentValues cv_contain2 = new ContentValues();
-        cv_contain2.put(CONTAIN_ISLAND_ID, 2);
-        cv_contain2.put(CONTAIN_SPECIES_ID, 2);
-        db.insert(CONTAIN_TABLE, null, cv_contain2);
-
-        ContentValues cv_contain3 = new ContentValues();
-        cv_contain3.put(CONTAIN_ISLAND_ID, 2);
-        cv_contain3.put(CONTAIN_SPECIES_ID, 3);
-        db.insert(CONTAIN_TABLE, null, cv_contain3);
-
-        ContentValues cv_contain4 = new ContentValues();
-        cv_contain4.put(CONTAIN_ISLAND_ID, 2);
-        cv_contain4.put(CONTAIN_SPECIES_ID, 6);
-        db.insert(CONTAIN_TABLE, null, cv_contain4);
+//        ContentValues cv_contain1 = new ContentValues();
+//        cv_contain1.put(CONTAIN_ISLAND_ID, 1);
+//        cv_contain1.put(CONTAIN_SPECIES_ID, 1);
+//        db.insert(CONTAIN_TABLE, null, cv_contain1);
+//
+//        ContentValues cv_contain2 = new ContentValues();
+//        cv_contain2.put(CONTAIN_ISLAND_ID, 2);
+//        cv_contain2.put(CONTAIN_SPECIES_ID, 2);
+//        db.insert(CONTAIN_TABLE, null, cv_contain2);
+//
+//        ContentValues cv_contain3 = new ContentValues();
+//        cv_contain3.put(CONTAIN_ISLAND_ID, 2);
+//        cv_contain3.put(CONTAIN_SPECIES_ID, 3);
+//        db.insert(CONTAIN_TABLE, null, cv_contain3);
+//
+//        ContentValues cv_contain4 = new ContentValues();
+//        cv_contain4.put(CONTAIN_ISLAND_ID, 2);
+//        cv_contain4.put(CONTAIN_SPECIES_ID, 6);
+//        db.insert(CONTAIN_TABLE, null, cv_contain4);
 
     }
 

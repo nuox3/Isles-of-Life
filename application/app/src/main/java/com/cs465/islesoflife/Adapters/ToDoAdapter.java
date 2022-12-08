@@ -81,8 +81,8 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
                 if (isChecked) {
                     db.updateStatus(item.getId(), 1);
                     currEXP = currEXP + Integer.valueOf(item.getImportance());
-                    if(currEXP >= 100){
-                        currEXP = currEXP - 100;
+                    if(currEXP >= 5){
+                        currEXP = currEXP - 5;
                         int level = db.getIslandLevel(item.getCategory());
                         level += 1;
                         db.updateLevel(item.getCategory(), level);

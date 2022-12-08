@@ -54,6 +54,10 @@ public class IslandDetail  extends AppCompatActivity {
         int speciesResource569;
 
         switch (curIslandLevel) {
+            case 1:
+                Species234.setImageResource(android.R.color.transparent);
+                Species569.setImageResource(android.R.color.transparent);
+                break;
             case 2: // bird egg
                 if(speciesListSize != 0) {
                     speciesResource234 = getResources().getIdentifier(speciesList.get(0).getImagePath(), null, getPackageName());
@@ -127,7 +131,7 @@ public class IslandDetail  extends AppCompatActivity {
             islandName.setText(islandList.get(curIslandIdx).getName());
             islandLevel.setText("Level: " + islandList.get(curIslandIdx).getLevel());
             islandProgress.setProgress(islandList.get(curIslandIdx).getEXP());
-            islandProgressText.setText("(" + islandList.get(curIslandIdx).getEXP() + "/100)");
+            islandProgressText.setText("(" + islandList.get(curIslandIdx).getEXP() + "/5)");
             setIslandView();
 
             speciesNameList.add("Island Base: " + String.valueOf(islandList.get(curIslandIdx).getBase()));

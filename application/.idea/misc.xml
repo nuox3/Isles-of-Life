@@ -9,6 +9,8 @@
         <entry key="app/src/main/res/layout/calendar_view.xml" value="0.22282608695652173" />
         <entry key="app/src/main/res/layout/daily_task.xml" value="0.2203125" />
         <entry key="app/src/main/res/layout/homepage.xml" value="0.23020833333333332" />
+        <entry key="app/src/main/res/layout/homepage_single_island.xml" value="0.22916666666666666" />
+        <entry key="app/src/main/res/layout/island_detail.xml" value="0.25271739130434784" />
         <entry key="app/src/main/res/layout/new_island.xml" value="0.22083333333333333" />
         <entry key="app/src/main/res/layout/new_task.xml" value="0.2734375" />
         <entry key="app/src/main/res/layout/single_island.xml" value="0.22083333333333333" />
