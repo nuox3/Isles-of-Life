@@ -65,6 +65,10 @@ public class SingleIsland extends AppCompatActivity implements DialogCloseListen
         int speciesResource569;
 
         switch (curIslandLevel) {
+            case 1:
+                Species234.setImageResource(android.R.color.transparent);
+                Species569.setImageResource(android.R.color.transparent);
+                break;
             case 2: // bird egg
                 if(speciesListSize != 0) {
                     speciesResource234 = getResources().getIdentifier(speciesList.get(0).getImagePath(), null, getPackageName());
